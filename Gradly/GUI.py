@@ -1,7 +1,5 @@
 import customtkinter as ctk
-from tkinter import *
-import ServerSide
-from PIL import Image
+from ServerSide import getAverages, getStuName
 import ctypes
 
 # window
@@ -15,18 +13,26 @@ myappid = 'mycompany.myproduct.subproduct.version'
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 
 window.iconbitmap('GradlyNewIcon.ico')
+
+
+username = ""
+password = ""
 # basic functions
 def logIn():
-    x = str(ServerSide.getStuName(userEntry.get(), passEntry.get()))
+    x = str(getStuName(userEntry.get(), passEntry.get()))
     if('Invalid' in x):
         errorMessage.place(x=50, y = 320)
         errorMessage.configure(text = "Invalid Credentials!")
     else:
+        username = userEntry.get()
+        password = passEntry.get()
         headerLabel.configure(text = x)
-        headerLabel.configure(font=('afacad', 30))
+        headerLabel.configure(font=('Noto Sans', 30))
         headerLabel2.configure(text = "Options")
+        options(username, password)
         loginFrame.destroy()
         mainFrame.place(x=0,y=80)
+        
 
 
 
@@ -50,7 +56,7 @@ loginFrame=ctk.CTkFrame(
 errorMessage = ctk.CTkLabel(
     master = loginFrame,
     text_color="white",
-    font=('afacad', 20),
+    font=('Noto Sans', 20),
     bg_color="ForestGreen",
     corner_radius=20
 )
@@ -59,14 +65,14 @@ headerLabel = ctk.CTkLabel(
     master = topBox,
     text = "Gradly",
     text_color='white',
-    font=('afacad', 40)
+    font=('Noto Sans', 40)
 )
 
 headerLabel2 = ctk.CTkLabel(
     master = topBox,
     text = "Log In to HAC",
     text_color='white',
-    font=('afacad', 20)
+    font=('Noto Sans', 20)
 )
 
 userEntry = ctk.CTkEntry(
@@ -76,7 +82,7 @@ userEntry = ctk.CTkEntry(
     width=250,
     height=50,
     placeholder_text="Username",
-    font=('afacad', 25)
+    font=('Noto Sans', 25)
 
 )
 
@@ -87,7 +93,7 @@ passEntry = ctk.CTkEntry(
     width=250,
     height=50,
     placeholder_text="Password",
-    font=('afacad', 25)
+    font=('Noto Sans', 25)
 
 )
 
@@ -97,11 +103,11 @@ logInButton = ctk.CTkButton(
     fg_color='ForestGreen',
     hover_color='DarkGreen',
     text_color="white",
-    corner_radius=40,
+    corner_radius=10,
     width=50,
     height=50,
     text="Log In",
-    font=('afacad', 25),
+    font=('Noto Sans', 25),
     command=logIn
 )
 
@@ -114,37 +120,98 @@ mainFrame = ctk.CTkFrame(
 class1Button = ctk.CTkButton(
     master = mainFrame,
     fg_color='ForestGreen',
-    width = 200,
+    width = 280,
     height = 30,
     hover_color="DarkGreen",
     text_color='white',
-    corner_radius=40,
-    font=('afacad', 25)
+    corner_radius=10,
+    font=('Noto Sans', 18)
 )
 
+class2Button = ctk.CTkButton(
+    master = mainFrame,
+    fg_color='ForestGreen',
+    width = 280,
+    height = 30,
+    hover_color="DarkGreen",
+    text_color='white',
+    corner_radius=10,
+    font=('Noto Sans', 18)
+)
 
-class1Button.place(x=10, y = 10)
-logInButton.place(x=85, y=250)
+class3Button = ctk.CTkButton(
+    master = mainFrame,
+    fg_color='ForestGreen',
+    width = 280,
+    height = 30,
+    hover_color="DarkGreen",
+    text_color='white',
+    corner_radius=10,
+    font=('Noto Sans', 18)
+)
+
+class4Button = ctk.CTkButton(
+    master = mainFrame,
+    fg_color='ForestGreen',
+    width = 280,
+    height = 30,
+    hover_color="DarkGreen",
+    text_color='white',
+    corner_radius=10,
+    font=('Noto Sans', 18)
+)
+
+class5Button = ctk.CTkButton(
+    master = mainFrame,
+    fg_color='ForestGreen',
+    width = 280,
+    height = 30,
+    hover_color="DarkGreen",
+    text_color='white',
+    corner_radius=10,
+    font=('Noto Sans', 18)
+)
+
+class6Button = ctk.CTkButton(
+    master = mainFrame,
+    fg_color='ForestGreen',
+    width = 280,
+    height = 30,
+    hover_color="DarkGreen",
+    text_color='white',
+    corner_radius=10,
+    font=('Noto Sans', 18)
+)
+
+class7Button = ctk.CTkButton(
+    master = mainFrame,
+    fg_color='ForestGreen',
+    width = 280,
+    height = 30,
+    hover_color="DarkGreen",
+    text_color='white',
+    corner_radius=10,
+    font=('Noto Sans', 18)
+)
+
+mainButtonList = [class1Button, class2Button, class3Button, class4Button,class5Button, class6Button, class7Button]
+
+def options(user, passw):
+    classes = getAverages(user , passw)
+    #print(classes)
+    for x in range(0, len(classes)):
+        mainButtonList[x].configure(text = classes[x])
+    for x in range(0, len(mainButtonList) ):
+        mainButtonList[x].place(x = 10, y = ((x+1) * 40)-20)
+
+
+logInButton.place(x=100, y=250)
 passEntry.place(x=20,y=150)
 userEntry.place(x=20, y=80)
 headerLabel2.place(x=10, y=50)
 headerLabel.place(x=10,y=10)
 topBox.place(x = 0, y = 0)
 loginFrame.place(x=0, y=80)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
