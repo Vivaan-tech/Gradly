@@ -1,6 +1,5 @@
 import json
 import requests
-import requests
 from bs4 import BeautifulSoup
 
 
@@ -84,15 +83,10 @@ def callAverages(login_data):
 
         return ret
 
-username = ""
-password = ""
-
 def getAverages(user, passw):
     username = user
     password = passw
-    callAverages(payload)
-
-payload = {
+    payload = {
     '__RequestVerificationToken' : 'WhTfwATBjQRvM7y07dev-d3B7v9qhU9pReGjcehgFTyc0G-CSIYcb_htbFDaxqoY0rJwsgmKmVdLfri6d9KxV5xSmUUFB6xmN8yFN7sfmVI1',
     'SCKTY00328510CustomEnabled' : True,
     'SCKTY00436568CustomEnabled' : True,
@@ -102,5 +96,13 @@ payload = {
     'tempUN' : '',
     'tempPW' : '',
     'LogOnDetails.Password' : password
-}
-    
+    }
+    result = callAverages(payload)
+    #print(result)
+    classes = [] 
+    for x in result:
+        if(result[x] == ""):
+            classes.append("{:<25}{:>8}".format(x, "0"))
+        else:
+            classes.append("{:<25}{:>8}".format(x, result[x])) 
+    return classes
