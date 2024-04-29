@@ -252,7 +252,7 @@ dashboard = ctk.CTkFrame(
 
 dashboard1Button = ctk.CTkButton(
     master = dashboard,
-    fg_color='white',
+    fg_color='#2b2b2b',
     width = dashboardButtonWidth,
     height = 10,
     text_color='white',
@@ -262,7 +262,7 @@ dashboard1Button = ctk.CTkButton(
 
 dashboard2Button = ctk.CTkButton(
     master = dashboard,
-    fg_color='white',
+    fg_color='#2b2b2b',
     width = dashboardButtonWidth,
     height = 10,
     text_color='white',
@@ -272,7 +272,7 @@ dashboard2Button = ctk.CTkButton(
 
 dashboard3Button = ctk.CTkButton(
     master = dashboard,
-    fg_color='white',
+    fg_color='#2b2b2b',
     width = dashboardButtonWidth,
     height = 10,
     text_color='white',
@@ -282,7 +282,7 @@ dashboard3Button = ctk.CTkButton(
 
 dashboard4Button = ctk.CTkButton(
     master = dashboard,
-    fg_color='white',
+    fg_color='#2b2b2b',
     width = dashboardButtonWidth,
     height = 10,
     text_color='white',
@@ -290,10 +290,10 @@ dashboard4Button = ctk.CTkButton(
     font=('Tahoma', 18)
 )
 
-settingsImage = ctk.CTkImage(Image.open("gear.png"), size=(10, 10))
+settingsImage = ctk.CTkImage(Image.open("SettingsIcon.png"), size=(10, 10))
 dashboard5Button = ctk.CTkButton(
     master = dashboard,
-    fg_color='white',
+    fg_color='#2b2b2b',
     width = dashboardButtonWidth,
     height = 10,
     text_color='white',
