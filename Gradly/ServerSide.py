@@ -1,7 +1,7 @@
 import json
 import requests
 from bs4 import BeautifulSoup
-
+import cchardet
 
 
 def fetch_student_classes(username, password):
