@@ -11,7 +11,7 @@ window.geometry('300x500')
 window.resizable(False, False)
 # photo = PhotoImage(Image.open('GradlyIconNew.png'))
 
-myappid = 'mycompany.myproduct.subproduct.version'
+myappid = 'GradlyNewIcon.ico'
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 
 window.iconbitmap('GradlyNewIcon.ico')
@@ -22,18 +22,19 @@ password = ""
 dashboardButtonWidth = 10
 # basic functions
 def logIn():
-    x = str(getStuName(userEntry.get(), passEntry.get()))
+    username = userEntry.get()
+    password = passEntry.get()
+    x = str(getStuName(username, password))
+    #print(x)
     if('Invalid' in x):
-        errorMessage.place(x=50, y = 320)
+        errorMessage.place(x=60, y = 320)
         errorMessage.configure(text = "Invalid Credentials!")
     else:
-        username = userEntry.get()
-        password = passEntry.get()
-        headerLabel.configure(text = x)
+        headerLabel.configure(text = "Grades")
         headerLabel.configure(font=('Tahoma', 30))
-        headerLabel2.configure(text = "Options")
+        headerLabel2.configure(text = x)
         options(username, password, dashboardButtonWidth)
-        loginFrame.destroy()
+        loginFrame.place_forget()
         mainFrame.place(x=0,y=80)
         
 def viewPassword():
@@ -42,8 +43,6 @@ def viewPassword():
     else:
         passEntry.configure(show='*')
 
-
-    
 
 # basic layout
 topBox = ctk.CTkFrame(
@@ -67,8 +66,10 @@ errorMessage = ctk.CTkLabel(
     master = loginFrame,
     text_color="white",
     font=('Tahoma', 20),
-    bg_color="ForestGreen",
-    corner_radius=20
+    fg_color="ForestGreen",
+    height=20,
+    bg_color = "white",
+    corner_radius= 5 
 )
 
 headerLabel = ctk.CTkLabel(
@@ -162,10 +163,10 @@ class1Button = ctk.CTkButton(
     fg_color='ForestGreen',
     width = 280,
     height = 30,
-    hover_color="DarkGreen",
+    hover = False,
     text_color='white',
     corner_radius=10,
-    font=('Tahoma', 18)
+    font=('Tahoma', 19)
 )
 
 class2Button = ctk.CTkButton(
@@ -173,10 +174,10 @@ class2Button = ctk.CTkButton(
     fg_color='ForestGreen',
     width = 280,
     height = 30,
-    hover_color="DarkGreen",
+    hover = False,
     text_color='white',
     corner_radius=10,
-    font=('Tahoma', 18)
+    font=('Tahoma', 19)
 )
 
 class3Button = ctk.CTkButton(
@@ -184,10 +185,10 @@ class3Button = ctk.CTkButton(
     fg_color='ForestGreen',
     width = 280,
     height = 30,
-    hover_color="DarkGreen",
+    hover = False,
     text_color='white',
     corner_radius=10,
-    font=('Tahoma', 18)
+    font=('Tahoma', 19)
 )
 
 class4Button = ctk.CTkButton(
@@ -195,10 +196,10 @@ class4Button = ctk.CTkButton(
     fg_color='ForestGreen',
     width = 280,
     height = 30,
-    hover_color="DarkGreen",
+    hover = False,
     text_color='white',
     corner_radius=10,
-    font=('Tahoma', 18)
+    font=('Tahoma', 19)
 )
 
 class5Button = ctk.CTkButton(
@@ -206,10 +207,10 @@ class5Button = ctk.CTkButton(
     fg_color='ForestGreen',
     width = 280,
     height = 30,
-    hover_color="DarkGreen",
+    hover = False,
     text_color='white',
     corner_radius=10,
-    font=('Tahoma', 18)
+    font=('Tahoma', 19)
 )
 
 class6Button = ctk.CTkButton(
@@ -217,10 +218,10 @@ class6Button = ctk.CTkButton(
     fg_color='ForestGreen',
     width = 280,
     height = 30,
-    hover_color="DarkGreen",
+    hover = False,
     text_color='white',
     corner_radius=10,
-    font=('Tahoma', 18)
+    font=('Tahoma', 19)
 )
 
 class7Button = ctk.CTkButton(
@@ -228,17 +229,129 @@ class7Button = ctk.CTkButton(
     fg_color='ForestGreen',
     width = 280,
     height = 30,
-    hover_color="DarkGreen",
+    hover = False,
     text_color='white',
     corner_radius=10,
-    font=('Tahoma', 18)
+    font=('Tahoma', 19)
+)
+
+class1Label = ctk.CTkButton(
+    master = class1Button,
+    fg_color="dimgrey",
+    hover_color="dimgrey",
+    width=5,
+    height = 20,
+    corner_radius=10,
+    font = ("Tahoma", 14),
+    text_color="white"
+)
+
+class2Label = ctk.CTkButton(
+    bg_color="transparent",
+    master = class2Button,
+    fg_color="dimgray",
+    hover_color="dimgray",
+    width=5,
+    height = 20,
+    corner_radius=10,
+    font = ("Tahoma", 14),
+    text_color="white"
+)
+
+class3Label = ctk.CTkButton(
+    bg_color="transparent",
+    master = class3Button,
+    fg_color="dimgray",
+    hover_color="dimgray",
+    width=5,
+    height = 20,
+    corner_radius=10,
+    font = ("Tahoma", 14),
+    text_color="white"
+)
+
+class4Label = ctk.CTkButton(
+    bg_color="transparent",
+    master = class4Button,
+    fg_color="dimgray",
+    hover_color="dimgray",
+    width=5,
+    height = 20,
+    corner_radius=10,
+    font = ("Tahoma", 14),
+    text_color="white"
+)
+
+class5Label = ctk.CTkButton(
+    bg_color="transparent",
+    master = class5Button,
+    hover_color="dimgray",
+    fg_color="dimgray",
+    width=5,
+    height = 20,
+    corner_radius=10,
+    font = ("Tahoma", 14),
+    text_color="white"
+)
+
+class6Label = ctk.CTkButton(
+    bg_color="transparent",
+    master = class6Button,
+    hover_color="dimgray",
+    fg_color="dimgray",
+    width=5,
+    height = 20,
+    corner_radius=10,
+    font = ("Tahoma", 14),
+    text_color="white"
+)
+
+class7Label = ctk.CTkButton(
+    master = class7Button,
+    fg_color="dimgray",
+    hover_color="dimgray",
+    width=5,
+    height = 20,
+    corner_radius=10,
+    font = ("Tahoma", 14),
+    text_color="white",
+    bg_color="transparent",
+)
+
+def logOut():
+    userEntry.delete(0, len(userEntry.get()))
+    passEntry.delete(0, len(passEntry.get()))
+    dashboard.place_forget()
+    mainFrame.place_forget()
+    settingsFrame.place_forget()
+    headerLabel.configure(text = "Gradly")
+    headerLabel2.configure(text = "Log In to HAC")
+    loginFrame.place(x=0, y= 80)
+
+logOutButton = ctk.CTkButton(
+    master = settingsFrame,
+    bg_color='transparent',
+    fg_color='ForestGreen',
+    hover_color='DarkGreen',
+    text_color="white",
+    corner_radius=10,
+    width=200,
+    height=50,
+    text="Log Out",
+    font=('Tahoma', 25),
+    command=logOut
 )
 
 def displaySettings():
     mainFrame.place_forget()
     settingsFrame.place(x = 0 , y = 80)
+    headerLabel.configure(text = "Settings")
+    #headerLabel2.configure(text = "")
+    logOutButton.place(x=50, y = 280)
 
 def displayGrades():
+    headerLabel.configure(text = "Grades") 
+    settingsFrame.place_forget()
     mainFrame.place(x=0, y = 80)
 
 dashboard = ctk.CTkFrame(
@@ -252,7 +365,7 @@ dashboard = ctk.CTkFrame(
 
 dashboard1Button = ctk.CTkButton(
     master = dashboard,
-    fg_color='#2b2b2b',
+    fg_color='forestgreen',
     width = dashboardButtonWidth,
     height = 10,
     text_color='white',
@@ -262,7 +375,7 @@ dashboard1Button = ctk.CTkButton(
 
 dashboard2Button = ctk.CTkButton(
     master = dashboard,
-    fg_color='#2b2b2b',
+    fg_color='forestgreen',
     width = dashboardButtonWidth,
     height = 10,
     text_color='white',
@@ -270,19 +383,22 @@ dashboard2Button = ctk.CTkButton(
     font=('Tahoma', 18)
 )
 
+GradesTabImage = ctk.CTkImage(Image.open("GradesTabImage.png"), size=(25, 25))
 dashboard3Button = ctk.CTkButton(
     master = dashboard,
-    fg_color='#2b2b2b',
+    fg_color='forestgreen',
     width = dashboardButtonWidth,
     height = 10,
     text_color='white',
     corner_radius=10,
-    font=('Tahoma', 18)
+    font=('Tahoma', 18),
+    image=GradesTabImage,
+    command = displayGrades
 )
 
 dashboard4Button = ctk.CTkButton(
     master = dashboard,
-    fg_color='#2b2b2b',
+    fg_color='forestgreen',#2b2b2b
     width = dashboardButtonWidth,
     height = 10,
     text_color='white',
@@ -290,10 +406,10 @@ dashboard4Button = ctk.CTkButton(
     font=('Tahoma', 18)
 )
 
-settingsImage = ctk.CTkImage(Image.open("SettingsIcon.png"), size=(10, 10))
+settingsImage = ctk.CTkImage(Image.open("SettingsIcon.png"), size=(22, 22))
 dashboard5Button = ctk.CTkButton(
     master = dashboard,
-    fg_color='#2b2b2b',
+    fg_color='forestgreen',
     width = dashboardButtonWidth,
     height = 10,
     text_color='white',
@@ -304,23 +420,32 @@ dashboard5Button = ctk.CTkButton(
 )
 
 
-mainButtonList = [class1Button, class2Button, class3Button, class4Button,class5Button, class6Button, class7Button]
-mainDashboardList = [dashboard, dashboard1Button, dashboard2Button, dashboard3Button, dashboard4Button, dashboard5Button]
+mainButtonList = [class1Button, class2Button, class3Button, class4Button,class5Button
+                  , class6Button, class7Button, class1Label, class2Label, class3Label, 
+                  class4Label, class5Label, class6Label, class7Label]
+
+mainDashboardList = [dashboard, dashboard1Button, dashboard2Button, 
+                     dashboard3Button, dashboard4Button, dashboard5Button]
 def options(user, passw, dashboardButtonWidth):
+    posX = 30
     num= dashboardButtonWidth*(len(mainDashboardList)-1)
     classes = getAverages(user , passw)
     #print(classes)
-    for x in range(0, len(classes)):
-        mainButtonList[x].configure(text = classes[x])
-    for x in range(0, len(mainButtonList) ):
+    for x in range(0, len(classes) - 7):
+        #s = len(classes[x]) + 10
+        mainButtonList[x].configure(text = "{:<29}".format(classes[x]))
+        mainButtonList[x+7].configure(text = classes[x+7])
+    for x in range(0, len(mainButtonList) - 7):
         mainButtonList[x].place(x = 10, y = ((x+1) * 40)-20)
+        mainButtonList[x+7].place(x = 235, y = 3)
     for i in range(1, len(mainDashboardList)+1):
         if i == 1:
             mainDashboardList[i-1].place(x=0, y=440)
         else:
-            posX = ((i-2)*((300/(len(mainDashboardList)-1))-dashboardButtonWidth)) + num
-            mainDashboardList[i-1].configure(text = "", hover_color="#171717")
-            mainDashboardList[i-1].place(x=posX, y = 20)
+            #((i-2)*((300/(len(mainDashboardList)-1))-dashboardButtonWidth)) + num
+            mainDashboardList[i-1].configure(text = "", hover_color="forestgreen")
+            mainDashboardList[i-1].place(x=posX, y = 15)
+            posX += 50
             #(300/(len(mainDashboardList)-1))-dashboardButtonWidth
 
 
