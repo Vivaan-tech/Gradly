@@ -1,38 +1,10 @@
 import json
 import requests
 from bs4 import BeautifulSoup
-import cchardet
+#import cchardet
 
 
-def fetch_student_classes(username, password):
-    
-    data = {
-        'link': "https://homeaccess.katyisd.org/",
-        'username': username,
-        'password': password
-    }
- 
-    url = 'https://homeaccesscenterapi.vercel.app/api/classes?link=https://homeaccess.katyisd.org/&user='+username+'&pass='+password
-    try:
-        response = requests.post(url, json=data)
-        response.raise_for_status()
 
-
-        print(response.json())
-    except requests.exceptions.RequestException as e:
-        print(f'Error: {e}')
-
-# username = input('username: ')
-# password = input('password: ')
-
-#fetch_student_classes(username, password)
-
-# 'user' : username
-# 'pass' : password
-# 'route' : 'Classes'
-# 
-# response =  requests.get(f"https://homeaccesscenterapi.vercel.app/api/ipr?link=https://homeaccess.katyisd.org/&user={username}&pass={password}")
-# print(response.json())
 
 def getStuName(username, password):
     response = requests.get(f"https://homeaccesscenterapi.vercel.app/api/name?link=https://homeaccess.katyisd.org/&user={username}&pass={password}")
@@ -40,19 +12,9 @@ def getStuName(username, password):
     if 'name' in x:
         return x['name']
     else:
-        print(x)
+        #print(x)
         return 'Invalid User or Pass'
     
-# def getStuClasses(username, password):
-#     response =  requests.get(f"https://homeaccesscenterapi.vercel.app/api/ipr?link=https://homeaccess.katyisd.org/&user={username}&pass={password}")
-#     x = response.json()
-#     mainList = x['data']
-#     classList = []
-#     for row in mainList:
-#         for col in row:
-#             if(mainList[mainList.index(row)] > -1 and mainList[mainList.index(row)] < 6):
-#                 classList+=col
-#     print(classList)
 
 def callAverages(login_data):
     with requests.Session() as session:
@@ -87,7 +49,7 @@ def getAverages(user, passw):
     username = user
     password = passw
     payload = {
-    '__RequestVerificationToken' : 'WhTfwATBjQRvM7y07dev-d3B7v9qhU9pReGjcehgFTyc0G-CSIYcb_htbFDaxqoY0rJwsgmKmVdLfri6d9KxV5xSmUUFB6xmN8yFN7sfmVI1',
+    '__RequestVerificationToken' : '',
     'SCKTY00328510CustomEnabled' : True,
     'SCKTY00436568CustomEnabled' : True,
     'Database' : 10,
@@ -101,8 +63,11 @@ def getAverages(user, passw):
     #print(result)
     classes = [] 
     for x in result:
+        classes.append(x)
+    for x in result:
         if(result[x] == ""):
-            classes.append("{:<25}{:>8}".format(x, "0"))
+            classes.append("0.0")
         else:
-            classes.append("{:<25}{:>8}".format(x, result[x])) 
+            #print(result[x])
+            classes.append(result[x]) 
     return classes
